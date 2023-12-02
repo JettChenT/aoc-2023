@@ -38,7 +38,6 @@ fn main() {
             }
         }
         let delt = first_i*10 + last_i;
-        // println!("{} {} {}", first_i, last_i, delt);
         tot += delt;
     }
     println!("{}", tot);
