@@ -5,19 +5,20 @@ defmodule ProblemOne do
       |> String.split(": ")
       |> List.last()
       |> String.split("; ")
-      |> Enum.map(& &1
-        |> String.split(", ")
-        |> Enum.map(fn t ->
-          [num_st | [col | _]] = String.split(t, " ")
-          num = String.to_integer(num_st)
-          %{col => num}
-        end)
-        |> Enum.reduce(
-          %{"red" => 0, "blue" => 0, "green" => 0},
-          fn map, acc ->
-            Map.merge(acc, map, fn _k, v1, v2 -> v1 + v2 end)
-          end
-        )
+      |> Enum.map(
+        &(&1
+          |> String.split(", ")
+          |> Enum.map(fn t ->
+            [num_st | [col | _]] = String.split(t, " ")
+            num = String.to_integer(num_st)
+            %{col => num}
+          end)
+          |> Enum.reduce(
+            %{"red" => 0, "blue" => 0, "green" => 0},
+            fn map, acc ->
+              Map.merge(acc, map, fn _k, v1, v2 -> v1 + v2 end)
+            end
+          ))
       )
       |> Enum.reduce(
         %{"red" => 0, "blue" => 0, "green" => 0},
