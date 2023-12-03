@@ -145,6 +145,6 @@ pub fn main() {
     })
     |> iterator.fold(from: 0, with: fn(a, b) { a + b })
 
-  res * 10
+  res
   |> io.debug
 }
